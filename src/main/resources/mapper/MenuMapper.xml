@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuchao.securitydemo.security.mapper.UserMapper">
+
+    <select id="findByName" parameterType="string" resultType="com.liuchao.securitydemo.security.entity.User">
+        select * from user where username=#{name}
+    </select>
+
+    <select id="findByUserId" parameterType="int" resultType="com.liuchao.securitydemo.security.entity.Menu">
+        select m.* from menu m,role r,role_menu rm ,user u ,user_role ur where m.id=rm.menu_id and r.id=rm.role_id and u.id=ur.user_id and r.id=ur.role_id and u.id=#{id}
+    </select>
+
+    <select id="getAllUsers" resultType="com.liuchao.securitydemo.security.entity.User">
+        select * from user
+    </select>
+
+    <select id="findAllMenu" resultType="com.liuchao.securitydemo.security.entity.Menu">
+        select * from menu
+    </select>
+
+</mapper>
